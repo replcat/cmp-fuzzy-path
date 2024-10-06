@@ -196,9 +196,6 @@ source.complete = function(self, params, callback)
               kind = kind,
               -- data is for the compare function
               data = { path = cwd .. '/' .. item, stat = stat, score = score },
-              -- hack cmp to not filter our fuzzy matches. If we do not use
-              -- this, the user has to input the first character of the match
-              filterText = filterText,
             })
           end
         end
