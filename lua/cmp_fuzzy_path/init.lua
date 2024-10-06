@@ -146,11 +146,7 @@ source.complete = function(self, params, callback)
   local filterText = string.sub(params.context.cursor_before_line, params.offset)
 
   -- indicate that we are searching for files
-  callback({ items = { {
-    label = 'Searching...',
-    filterText = filterText,
-    data = { path = nil, stat = nil, score = -1000 },
-  } }, isIncomplete = true })
+  callback({ items = {}, isIncomplete = true })
   local job
   local job_start = vim.fn.reltime()
   job = fn.jobstart(cmd, {
@@ -161,11 +157,7 @@ source.complete = function(self, params, callback)
         return
       end
       if #items == 0 then
-        callback({ items = { {
-          label = 'No matches found',
-          filterText = filterText,
-          data = { path = nil, stat = nil, score = -1000 },
-        } }, isIncomplete = true })
+        callback({ items = {}, isIncomplete = true })
       else
         callback({ items = items, isIncomplete = true })
       end
